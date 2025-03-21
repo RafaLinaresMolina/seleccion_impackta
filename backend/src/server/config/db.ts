@@ -9,7 +9,7 @@ const db = new Sequelize(
   process.env.DB_PASS as string,
   {
     host: process.env.DB_HOST,
-    dialect: "mariadb",
+    dialect: "mysql",
     port: Number(process.env.DB_PORT as string),
     logging: false,
     pool: { max: 100, min: 0, idle: 10000 },

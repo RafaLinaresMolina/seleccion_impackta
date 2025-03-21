@@ -1,23 +1,22 @@
 import express from "express";
 import cors from "cors";
-import https from "https";
-import fs from "fs";
-import { connectToDatabase, db } from "./config/db";
-
+import { connectToDatabase } from "./config/db";
 import * as dotenv from "dotenv";
 import path from "path";
-
-import exampleRoutes from "./routes/exampleRoutes";
+import pokemonRouter from "./routes/pokemon.routes"
 
 dotenv.config({ path: path.resolve(__dirname, "../..", ".env") });
 
 const env = process.env.NODE_ENV ?? "development";
 
 const app = express();
+app.use(cors());
+app.use(express.json());
+app.use("/pokemon", pokemonRouter);
 
 const initializeServer = (port: number): void => {
   const server = app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+    console.log(`[${env}] Listening on port ${port}`);
   });
   server.on("error", (error: any) => {
     console.log("Server error", error);
@@ -27,10 +26,5 @@ const initializeServer = (port: number): void => {
   });
   connectToDatabase();
 };
-
-app.use(cors());
-app.use(express.json());
-app.use(exampleRoutes);
-
 
 export default initializeServer;
