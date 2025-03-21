@@ -10,12 +10,12 @@ class PokemonRepository {
 
     if (error) {
       console.error("Error in PokemonRepository.findAll:", error);
-      return [];
+      throw error;
     }
 
     const plainPokemon = payload.map((pokemon) => pokemon.get({ plain: true }));
     const pokemon = plainToInstance(PokemonDto, plainPokemon, {
-      excludeExtraneousValues:true
+      excludeExtraneousValues: true,
     });
     return pokemon;
   }
@@ -34,9 +34,16 @@ class PokemonRepository {
 
     if (error) {
       console.error("Error in PokemonRepository.create:", error);
+      throw error;
     }
 
-    const pokemon = plainToInstance(PokemonDto, rawPokemon);
+    console.log(rawPokemon);
+    const newPokemon = rawPokemon?.get({ plain: true });
+    const pokemon = plainToInstance(
+      PokemonDto,
+      newPokemon
+    );
+    console.log(pokemon);
     return pokemon;
   }
 }
