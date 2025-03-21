@@ -1,6 +1,21 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import { db } from "../../config/db";
-const Pokemon = db.define(
+
+interface PokemonAttributes {
+  id?: number;
+  name: string;
+  height: number;
+  number: number;
+  health: number;
+  weight: number;
+  url: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+interface PokemonEntity extends Model<PokemonAttributes, PokemonAttributes>, PokemonAttributes {}
+
+const Pokemon = db.define<PokemonEntity>(
   "pokemon",
   {
     name: { type: DataTypes.STRING, allowNull: false },
