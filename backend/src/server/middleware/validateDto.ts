@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { validate } from 'class-validator';
-import { plainToInstance } from 'class-transformer';
+import { validate, ValidationError } from 'class-validator';
+import { plainToInstance, ClassConstructor } from 'class-transformer';
 
-export function validateDto(dtoClass: any) {
+export function validateDto<T extends object>(dtoClass: ClassConstructor<T>) {
   return async (req: Request, res: Response, next: NextFunction) => {
     const dtoObject = plainToInstance(dtoClass, req.body);
     
@@ -12,7 +12,7 @@ export function validateDto(dtoClass: any) {
     });
     
     if (errors.length > 0) {
-      const validationErrors = errors.reduce((acc, err) => {
+      const validationErrors = errors.reduce((acc, err: ValidationError) => {
         const property = err.property;
         const constraints = err.constraints ? Object.values(err.constraints) : [];
         
