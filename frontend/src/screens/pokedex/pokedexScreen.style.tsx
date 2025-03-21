@@ -3,105 +3,100 @@ import styled from 'styled-components';
 export const PokedexScreenWrapper = styled.main`
     background-image: url('/assets/images/bg.jpg');
     height: 100vh;
-    border:0;
-    margin:0;
+    border: 0;
+    margin: 0;
     background-size: cover;
 
-    .actions_container{
-        position:absolute;
-        right:30px;
-        top:30px;
+    .actions_container {
+        position: absolute;
+        right: 30px;
+        top: 30px;
 
-        img{
-            width:100px;
-            height:50px;
+        img {
+            width: 100px;
+            height: 50px;
         }
     }
 
-    .title_section{
-        padding:50px 0;
+    .title_section {
+        padding: 50px 0;
         margin-bottom: 50px;
-        height:80px;
-        display:flex;
-        justify-content:center;
+        height: 80px;
+        display: flex;
+        justify-content: center;
 
-        h2{
-            font-family:'pokemon';
-            letter-spacing:3px;
-            font-size:50px !important;
+        h2 {
+            font-family: 'pokemon';
+            letter-spacing: 3px;
+            font-size: 50px !important;
         }
     }
 
-    .pokedex_container{
-        padding:10px;
-        //background-color:rgba(22,22,22,0.7);
-        background-color:#FFFFFF;
-        width:80%;
-        height:350px;
-        overflow-y:scroll;
-        display:flex;
-        margin-left:auto;
-        margin-right:auto;
-
+    .pokedex_container {
+        padding: 20px;
+        background-color: #ffffff;
+        width: 80%;
+        height: 350px;
+        overflow-y: scroll;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     }
 
-    .action_img{
-        cursor:pointer;
+    .pokemon_card {
+        width: 220px;
+        background-color: #f8f8f8;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        transition: transform 0.2s;
+        border: 3px solid #e63950;
+        
+        &:hover {
+            transform: translateY(-5px);
+        }
     }
 
-    .shadow{
-        position:absolute;
-        left:0;
-        right:0;
-        top:0;
-        bottom:0;
-        background-color:rgba(0,0,0,0.7);
+    .pokemon_image {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        border-bottom: 3px solid #e63950;
+        background-color: white;
+        padding: 10px 0;
     }
-    .modal{
-        background-color:#FFFFFF;
-        z-index:100;
-        padding:20px;
-        position:absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
 
-        display:flex;
-        flex-wrap:wrap;
-        gap:10px;
-
-        input{
-            width:45%;
-            height:25px;
-            border:none;
-            background-color: rgb(221,221,221);
-            padding:5px;
+    .pokemon_info {
+        padding: 15px;
+        background-color: #ffebee;
+        
+        h3 {
+            font-family: 'pokemon', sans-serif;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 1px;
         }
         
-        
-    }
-
-    .close_modal{
-        position:absolute;
-        right:10px;
-        top:10px;
-        cursor:pointer;
-    }
-
-    .btn_container{
-        width:100%;
-        display:flex;
-        justify-content:center;
-        margin:10px 0;
-
-        button{
-            border:none;
-            color:white;
-            padding:5px 15px;
-            background-color: #385226;
+        p {
+            font-family: 'pokemon', sans-serif;
+            font-size: 14px;
+            color: #555;
+            margin: 5px 0;
+            letter-spacing: 0.5px;
         }
     }
 
+    .action_img {
+        cursor: pointer;
+    }
 `;
 
 export default PokedexScreenWrapper;
