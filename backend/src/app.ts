@@ -1,8 +1,7 @@
+import 'reflect-metadata';
 import initializeServer from "./server";
 import * as dotenv from "dotenv";
-import path from "path";
-
-dotenv.config({ path: path.resolve(__dirname, "..", ".env") });
+dotenv.config({ path: ".env" });
 
 const port = process.env.WEB_PORT ?? 7768;
 
