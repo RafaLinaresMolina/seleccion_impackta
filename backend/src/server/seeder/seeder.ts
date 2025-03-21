@@ -1,8 +1,6 @@
-//import init from "../controllers/initController";
-//import { db } from "../config/db";
+import init from "../controllers/initController";
+import { db } from "../config/db";
 
-const { db } = require("../config/db.js");
-const { init } = require("../controllers/initController");
 const importarDatos = async () => {
   try {
     //Autenticar
